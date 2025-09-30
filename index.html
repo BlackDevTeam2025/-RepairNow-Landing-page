@@ -960,6 +960,161 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.5);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+        }
+
+        .back-to-top:active {
+            transform: translateY(-2px);
+        }
+
+        /* Smooth Scroll Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .animate-on-scroll.animated {
+            animation-duration: 0.8s;
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-up.animated {
+            animation-name: fadeInUp;
+        }
+
+        .fade-in.animated {
+            animation-name: fadeIn;
+        }
+
+        .slide-in-left.animated {
+            animation-name: slideInLeft;
+        }
+
+        .slide-in-right.animated {
+            animation-name: slideInRight;
+        }
+
+        .scale-in.animated {
+            animation-name: scaleIn;
+        }
+
+        /* Smooth transitions for interactive elements */
+        a, button, .problem-card, .benefit-side, .testimonial-card, .stat-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hover pulse effect */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .cta-button:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* Mobile responsive for back to top button */
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 48px;
+                height: 48px;
+                bottom: 24px;
+                right: 24px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2136,6 +2291,136 @@
         window.addEventListener('beforeunload', function() {
             engagementData.timeOnPage = Date.now() - engagementData.timeOnPage;
             localStorage.setItem('engagementData', JSON.stringify(engagementData));
+        });
+
+        // Back to Top Button functionality
+        const backToTopButton = document.createElement('button');
+        backToTopButton.className = 'back-to-top';
+        backToTopButton.innerHTML = '↑';
+        backToTopButton.setAttribute('aria-label', 'Back to top');
+        document.body.appendChild(backToTopButton);
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll to top
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#join-waitlist') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Animate on scroll functionality
+        const animateOnScrollObserver = new IntersectionObserver(
+            function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        animateOnScrollObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        // Add animation classes to sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate section headings
+            document.querySelectorAll('h2, .section-badge').forEach((el, index) => {
+                el.classList.add('animate-on-scroll', 'fade-in-up');
+                setTimeout(() => {
+                    animateOnScrollObserver.observe(el);
+                }, index * 50);
+            });
+
+            // Animate problem cards
+            document.querySelectorAll('.problem-card').forEach((el, index) => {
+                el.classList.add('animate-on-scroll', 'slide-in-left');
+                setTimeout(() => {
+                    animateOnScrollObserver.observe(el);
+                }, index * 100);
+            });
+
+            // Animate solution benefits
+            document.querySelectorAll('.benefit-side').forEach((el, index) => {
+                if (index % 2 === 0) {
+                    el.classList.add('animate-on-scroll', 'slide-in-left');
+                } else {
+                    el.classList.add('animate-on-scroll', 'slide-in-right');
+                }
+                setTimeout(() => {
+                    animateOnScrollObserver.observe(el);
+                }, index * 100);
+            });
+
+            // Animate testimonial cards
+            document.querySelectorAll('.testimonial-card').forEach((el, index) => {
+                el.classList.add('animate-on-scroll', 'scale-in');
+                setTimeout(() => {
+                    animateOnScrollObserver.observe(el);
+                }, index * 100);
+            });
+
+            // Animate stats
+            document.querySelectorAll('.stat-item').forEach((el, index) => {
+                el.classList.add('animate-on-scroll', 'fade-in-up');
+                setTimeout(() => {
+                    animateOnScrollObserver.observe(el);
+                }, index * 100);
+            });
+
+            // Animate phone mockups in How It Works section
+            document.querySelectorAll('.benefits-section > div > div').forEach((el, index) => {
+                if (el.querySelector('[style*="height: 600px"]') || el.querySelector('[style*="height: 500px"]')) {
+                    el.classList.add('animate-on-scroll', 'scale-in');
+                    animateOnScrollObserver.observe(el);
+                }
+            });
+        });
+
+        // Add smooth hover effects for cards
+        document.querySelectorAll('.problem-card, .benefit-side, .testimonial-card').forEach(card => {
+            card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+
+        // Enhanced form animation on focus
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.2)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
         });
     </script>
 </body>
