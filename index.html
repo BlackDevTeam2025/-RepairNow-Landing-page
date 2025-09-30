@@ -713,16 +713,36 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            /* Header Mobile */
+            .header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 22px !important;
+            }
+
+            .coming-soon-badge {
+                font-size: 10px !important;
+                padding: 4px 10px !important;
+            }
+
+            .nav-cta {
+                font-size: 13px !important;
+                padding: 8px 16px !important;
+            }
+
+            /* Hero Section */
             .hero {
                 padding: 100px 0 60px;
             }
 
             .hero h1 {
-                font-size: 32px;
+                font-size: 32px !important;
             }
 
             .hero p {
-                font-size: 16px;
+                font-size: 16px !important;
             }
 
             .hero-content {
@@ -741,26 +761,86 @@
                 margin-right: auto !important;
             }
 
+            /* App preview images in hero */
+            .hero-content > div:first-child > div:last-child {
+                justify-content: center !important;
+            }
+
             .early-access-form {
-                padding: 24px;
+                padding: 24px !important;
             }
 
-            .solution-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            /* Pain Points Section */
+            .problem-section [style*="max-width: 800px"] > div {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
             }
 
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
+            .problem-section h2 {
+                font-size: 32px !important;
+            }
+
+            .problem-section h3 {
+                font-size: 18px !important;
+            }
+
+            /* Solution Before/After Section */
+            .solution-preview [style*="grid-template-columns: 1fr 80px 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            .solution-preview [style*="grid-template-columns: 1fr 80px 1fr"] > div:nth-child(2) {
+                display: none !important;
+            }
+
+            .solution-preview h2 {
+                font-size: 32px !important;
+            }
+
+            .solution-preview h3 {
+                font-size: 20px !important;
+            }
+
+            /* Stats Section */
+            .waitlist-stats .stats-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 16px !important;
+            }
+
+            .waitlist-stats h2 {
+                font-size: 32px !important;
+            }
+
+            .waitlist-stats [style*="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* How It Works Section */
+            .benefits-section h2 {
+                font-size: 32px !important;
+            }
+
+            /* Hide phone mockups on mobile for "How It Works" */
+            .benefits-section [style*="grid-template-columns: 400px 1fr"],
+            .benefits-section [style*="grid-template-columns: 1fr 400px"] {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            .benefits-section [style*="background: #1f2937"] {
+                display: none !important;
+            }
+
+            .benefits-section [style*="padding-top: 40px"] {
+                padding-top: 0 !important;
+            }
+
+            .benefits-section h3 {
+                font-size: 24px !important;
             }
 
             /* Timeline mobile responsive */
-            .benefits-section [style*="grid-template-columns: 1fr 80px 1fr"] {
-                grid-template-columns: 1fr !important;
-                gap: 20px !important;
-            }
-
             .benefits-section [style*="position: absolute"][style*="left: 50%"] {
                 display: none !important;
             }
@@ -774,21 +854,95 @@
                 text-align: left !important;
             }
 
+            /* General */
             .container {
-                padding: 0 16px;
+                padding: 0 16px !important;
             }
 
             .section-title {
-                font-size: 28px;
+                font-size: 28px !important;
             }
 
-            .phone-mockup {
-                width: 150px;
-                height: 300px;
+            .section-subtitle {
+                font-size: 16px !important;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            /* Buttons */
+            [style*="padding: 16px 40px"] {
+                padding: 14px 28px !important;
+                font-size: 16px !important;
+            }
+
+            /* Cards spacing */
+            [style*="padding: 32px"] {
+                padding: 24px !important;
+            }
+
+            [style*="padding: 40px"] {
+                padding: 28px !important;
+            }
+
+            /* Font sizes */
+            [style*="font-size: 42px"] {
+                font-size: 32px !important;
+            }
+
+            [style*="font-size: 28px"] {
+                font-size: 24px !important;
+            }
+
+            [style*="font-size: 24px"] {
+                font-size: 20px !important;
+            }
+
+            /* Grid gaps */
+            [style*="gap: 60px"] {
+                gap: 32px !important;
+            }
+
+            [style*="gap: 50px"] {
+                gap: 32px !important;
+            }
+
+            [style*="margin-bottom: 80px"] {
+                margin-bottom: 48px !important;
+            }
+
+            [style*="margin-bottom: 60px"] {
+                margin-bottom: 40px !important;
+            }
+        }
+
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            /* Hero 2-column stays but smaller */
+            .hero-content {
+                gap: 40px !important;
+            }
+
+            /* Solution section */
+            .solution-preview [style*="grid-template-columns: 1fr 80px 1fr"] {
+                gap: 32px !important;
+            }
+
+            /* How it works phone mockups */
+            .benefits-section [style*="grid-template-columns: 400px 1fr"],
+            .benefits-section [style*="grid-template-columns: 1fr 400px"] {
+                grid-template-columns: 300px 1fr !important;
+            }
+
+            .benefits-section [style*="height: 600px"] {
+                height: 500px !important;
+            }
+
+            /* Stats grid */
+            .waitlist-stats .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Font size adjustments */
+            [style*="font-size: 42px"] {
+                font-size: 36px !important;
             }
         }
 
@@ -1528,7 +1682,7 @@
     <footer style="background: #111827; color: white; padding: 80px 0 0;">
         <div class="container" style="max-width: 1200px;">
             <!-- Main Footer Content -->
-            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 60px;">
 
                 <!-- Company Info -->
                 <div>
@@ -1565,36 +1719,12 @@
                     </div>
                 </div>
 
-                <!-- Product Links -->
+                <!-- Quick Links -->
                 <div>
-                    <h4 style="font-size: 14px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Product</h4>
+                    <h4 style="font-size: 14px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Quick Links</h4>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                        <li><a href="#how-it-works" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">How It Works</a></li>
-                        <li><a href="#pricing" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Pricing</a></li>
-                        <li><a href="#services" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Services</a></li>
-                        <li><a href="#download" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Download App</a></li>
                         <li><a href="#join-waitlist" style="color: #3b82f6; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s;">Join Waitlist →</a></li>
-                    </ul>
-                </div>
-
-                <!-- Company Links -->
-                <div>
-                    <h4 style="font-size: 14px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Company</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                        <li><a href="#about" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">About Us</a></li>
-                        <li><a href="#careers" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Careers</a></li>
-                        <li><a href="#press" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Press Kit</a></li>
-                        <li><a href="#blog" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Blog</a></li>
-                        <li><a href="#partners" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Partner With Us</a></li>
-                    </ul>
-                </div>
-
-                <!-- Support Links -->
-                <div>
-                    <h4 style="font-size: 14px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Support</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                        <li><a href="#help" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Help Center</a></li>
-                        <li><a href="#safety" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Safety</a></li>
+                        <li><a href="#how-it-works" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">How It Works</a></li>
                         <li><a href="#terms" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Terms of Service</a></li>
                         <li><a href="#privacy" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Privacy Policy</a></li>
                         <li><a href="#contact" style="color: #9ca3af; text-decoration: none; font-size: 14px; transition: color 0.2s;">Contact Support</a></li>
@@ -1651,24 +1781,189 @@
     <!-- Mobile Footer Responsive -->
     <style>
         @media (max-width: 768px) {
+            /* Footer Mobile Optimizations */
+            footer {
+                padding: 60px 0 0 !important;
+            }
+
             footer > .container > div:first-child {
                 grid-template-columns: 1fr !important;
                 gap: 40px !important;
+                margin-bottom: 40px !important;
             }
 
+            /* Logo & Company Info */
+            footer .container > div:first-child > div:first-child {
+                text-align: center;
+            }
+
+            footer .container > div:first-child > div:first-child > div:first-child {
+                justify-content: center !important;
+            }
+
+            footer .container > div:first-child > div:first-child > p {
+                text-align: center;
+            }
+
+            /* Contact icons - stack better */
+            footer .container > div:first-child > div:first-child > div:last-child {
+                align-items: center !important;
+            }
+
+            footer .container > div:first-child > div:first-child > div:last-child > a,
+            footer .container > div:first-child > div:first-child > div:last-child > div {
+                justify-content: center !important;
+                text-align: center;
+            }
+
+            /* Footer links sections */
+            footer h4 {
+                font-size: 13px !important;
+                margin-bottom: 16px !important;
+            }
+
+            footer ul li a {
+                font-size: 13px !important;
+            }
+
+            footer ul {
+                gap: 10px !important;
+            }
+
+            /* Newsletter section */
             footer .container > div:nth-child(2) {
                 padding: 32px 24px !important;
+                margin-bottom: 40px !important;
             }
 
             footer .container > div:nth-child(2) > div {
                 grid-template-columns: 1fr !important;
                 gap: 24px !important;
+                text-align: center;
+            }
+
+            footer .container > div:nth-child(2) h3 {
+                font-size: 22px !important;
+            }
+
+            footer .container > div:nth-child(2) p {
+                font-size: 14px !important;
+            }
+
+            footer .container > div:nth-child(2) form {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            footer .container > div:nth-child(2) form input {
+                width: 100% !important;
+            }
+
+            footer .container > div:nth-child(2) form button {
+                width: 100% !important;
+                padding: 14px !important;
+            }
+
+            /* Bottom bar */
+            footer .container > div:last-child {
+                padding-top: 24px !important;
+                padding-bottom: 24px !important;
             }
 
             footer .container > div:last-child > div {
                 flex-direction: column;
-                align-items: flex-start !important;
+                align-items: center !important;
                 gap: 20px;
+                text-align: center;
+            }
+
+            footer .container > div:last-child > div > div:first-child {
+                font-size: 13px !important;
+            }
+
+            footer .container > div:last-child > div > div:last-child {
+                justify-content: center !important;
+            }
+        }
+
+        /* Small mobile (≤480px) */
+        @media (max-width: 480px) {
+            /* Header extra small */
+            .logo {
+                font-size: 20px !important;
+            }
+
+            .coming-soon-badge {
+                display: none !important;
+            }
+
+            .nav-cta {
+                font-size: 12px !important;
+                padding: 6px 12px !important;
+            }
+
+            /* Hero */
+            .hero h1 {
+                font-size: 28px !important;
+                line-height: 1.3 !important;
+            }
+
+            .hero p {
+                font-size: 15px !important;
+            }
+
+            .launch-announcement {
+                font-size: 12px !important;
+                padding: 8px 16px !important;
+            }
+
+            /* Stats grid - single column on very small screens */
+            .waitlist-stats .stats-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Footer - more compact */
+            footer {
+                padding: 40px 0 0 !important;
+            }
+
+            footer h4 {
+                font-size: 12px !important;
+            }
+
+            footer ul li a {
+                font-size: 12px !important;
+            }
+
+            footer .container > div:first-child {
+                gap: 32px !important;
+            }
+
+            footer .container > div:nth-child(2) {
+                padding: 24px 20px !important;
+            }
+
+            footer .container > div:nth-child(2) h3 {
+                font-size: 20px !important;
+            }
+
+            /* Social icons smaller */
+            footer .container > div:last-child > div > div:last-child a {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 16px !important;
+            }
+        }
+
+        /* Tablet header improvements */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .logo {
+                font-size: 26px !important;
+            }
+
+            .nav-cta {
+                font-size: 14px !important;
+                padding: 10px 20px !important;
             }
         }
     </style>
